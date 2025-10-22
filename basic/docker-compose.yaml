@@ -1,0 +1,30 @@
+# docker-compose.yml
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: trelawnm
+      POSTGRES_PASSWORD: school21
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: trelawnm@student.21-school.ru
+      PGADMIN_DEFAULT_PASSWORD: secretpassword
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
