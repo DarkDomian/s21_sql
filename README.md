@@ -35,6 +35,7 @@ docker-compose down
 ## Learning Journey
 
 - <a href="./basic/"><b>Day 00: First Steps in SQL</b></a>
+- <a href="./sets-joins/"><b>Day 01: Sets & JOINs</b></a>
 <!-- 
 - Day 01: Building SQL Foundations
 - Day 02: Deep Dive into Queries

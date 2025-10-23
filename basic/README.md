@@ -1,33 +1,5 @@
-# The s21 SQL bootcamp - `basic`
+## SQL bootcamp - `basic`
 
-### Prerequisites
-- Docker & Docker Compose
-
-### Database Setup
-1. Start containers:
-```bash
-docker-compose up -d
-```
-
-2. Access pgAdmin at [`localhost:80`](http://localhost:80)
-   - Login: `trelawnm@student.21-school.ru`
-   - Password: `secretpassword`
-
-3. Register database server in pgAdmin:
-   - **General Tab**: Any server name
-   - **Connections Tab**:
-     - Host: `postgres`
-     - Port: `5432`
-     - Database: `mydatabase`
-     - Username: `trelawnm`
-     - Password: `school21`
-
-### Stop Services
-```bash
-docker-compose down
-```
-
-## SQL Queries
 <a href="ex00/day00_ex00.sql"><b>Exercise 00</b></a> — Returns names and ages of all people from the city 'Kazan'.
 
 <a href="ex01/day00_ex01.sql"><b>Exercise 01</b></a> — Returns names and ages of all women from the city 'Kazan', sorted by name.
