@@ -10,6 +10,7 @@ services:
       - "5432:5432"
     volumes:
       - ./materials/init-scripts:/docker-entrypoint-initdb.d
+      - ./materials/postgres-data:/var/lib/postgresql/data
     networks:
       - app-network
 
@@ -18,10 +19,15 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: trelawnm@student.21-school.ru
       PGADMIN_DEFAULT_PASSWORD: secretpassword
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
     ports:
       - "80:80"
     depends_on:
       - postgres
+    volumes:
+      - ./materials/pgadmin-data:/var/lib/pgadmin
+      - ./materials/pgadmin-servers.json:/pgadmin4/servers.json
     networks:
       - app-network
 
