@@ -34,6 +34,7 @@ docker-compose down
 - <a href="./basic/"><b>Day 00: First Steps in SQL</b></a>
 - <a href="./sets-joins/"><b>Day 01: Sets & JOINs</b></a>
 - <a href="./deep-joins/"><b>Day 02: Deep JOINs</b></a>
+- <a href="./dml/"><b>Day 03: Data Manipulating Language</b></a>
 <!-- 
 - Day 01: Building SQL Foundations
 - Day 02: Deep Dive into Queries
