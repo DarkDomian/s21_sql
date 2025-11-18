@@ -35,10 +35,12 @@ docker-compose down
 - <a href="./sets-joins/"><b>Day 01: Sets & JOINs</b></a>
 - <a href="./deep-joins/"><b>Day 02: Deep JOINs</b></a>
 - <a href="./dml/"><b>Day 03: Data Manipulating Language</b></a>
+- <a href="./snapshots/"><b>Day 04: Snapshots</b></a>
 <!-- 
-- Day 01: Building SQL Foundations
-- Day 02: Deep Dive into Queries
-- Day 03: Advanced SQL Patterns
-- Day 04: SQL Optimization & Performance
-- Day 05: Mastering Complex Scenarios
+```bash
+for i in {00..08}; do
+    mkdir -p ex$i
+    touch ./ex$i/day04_ex$i.sql
+done
+```
 -->
