@@ -36,6 +36,7 @@ docker-compose down
 - <a href="./deep-joins/"><b>Day 02: Deep JOINs</b></a>
 - <a href="./dml/"><b>Day 03: Data Manipulating Language</b></a>
 - <a href="./snapshots/"><b>Day 04: Snapshots</b></a>
+- <a href="./salesman-problem/"><b>Day 05: Travaling Salesman Problem</b></a>
 <!-- 
 ```bash
 for i in {00..08}; do
