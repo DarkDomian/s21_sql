@@ -28,10 +28,10 @@ WITH RECURSIVE
         SELECT *
         FROM paths
         WHERE 
-            array_length(tour, 1) = (
+            array_length(tour, 1) > (
                 SELECT COUNT(DISTINCT point1) 
                 FROM hamiltonian_cycle
-            ) + 1
+            )
     )
 SELECT *
 FROM full_paths
