@@ -20,8 +20,12 @@ INSERT INTO salesman_graph VALUES
 ('d', 'c', 30),
 ('c', 'd', 30);
 
-WITH RECURSIVE hamiltonian_cycle
-AS (
+WITH RECURSIVE 
+number_of_towns AS (
+	SELECT COUNT(DISTINCT point1) 
+	FROM salesman_graph
+),
+hamiltonian_cycle AS (
 	-- Base (anchor) query here
 	SELECT 
 		point1,
@@ -41,7 +45,7 @@ AS (
 		hc.total_cost + hc.cost,
 		array_append(path, sg.point1)
 	FROM salesman_graph sg
-	INNER JOIN hamiltonian_cycle hc 
+	JOIN hamiltonian_cycle hc 
 		ON hc.point2 = sg.point1
 		AND hc.point1 != sg.point2
 		AND (
@@ -49,17 +53,13 @@ AS (
             OR sg.point1 = 'a'
         )
 	WHERE array_length(path, 1) < 5
+),
+possible_tours AS (
+	SELECT DISTINCT total_cost, path AS tour
+	FROM hamiltonian_cycle
+	WHERE array_length(path, 1) > (SELECT * FROM number_of_towns)
 )
--- add alias 
 
-SELECT DISTINCT total_cost, path AS tour
-FROM hamiltonian_cycle
-WHERE array_length(path, 1) = 5;
-
-
-
-
-
-
-
-
+SELECT * FROM possible_tours
+WHERE total_cost = (SELECT MIN(total_cost) FROM possible_tours)
+ORDER BY total_cost, tour;
