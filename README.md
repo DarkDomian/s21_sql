@@ -31,12 +31,13 @@ docker-compose down
 
 ## Learning Journey
 
-- <a href="./basic/"><b>Day 00: First Steps in SQL</b></a>
-- <a href="./sets-joins/"><b>Day 01: Sets & JOINs</b></a>
-- <a href="./deep-joins/"><b>Day 02: Deep JOINs</b></a>
-- <a href="./dml/"><b>Day 03: Data Manipulating Language</b></a>
-- <a href="./snapshots/"><b>Day 04: Snapshots</b></a>
-- <a href="./salesman-problem/"><b>Day 05: Travaling Salesman Problem</b></a>
+- <a href="./basic/"><b>First Steps in SQL</b></a>
+- <a href="./sets-joins/"><b>Sets & JOINs</b></a>
+- <a href="./deep-joins/"><b>Deep JOINs</b></a>
+- <a href="./dml/"><b>Data Manipulating Language</b></a>
+- <a href="./snapshots/"><b>Snapshots</b></a>
+- <a href="./salesman-problem/"><b>Travaling Salesman Problem</b></a>
+- <a href="./database-index/"><b>Database Index</b></a>
 <!-- 
 ```bash
 for i in {00..08}; do
