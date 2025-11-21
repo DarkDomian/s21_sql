@@ -36,14 +36,15 @@ WITH RECURSIVE
         FROM paths p
         INNER JOIN hamiltonian_cycle c ON 
             p.current = c.point1
-        WHERE 
-            NOT (c.point2 = ANY(tour))
-            OR (
-                array_length(tour, 1) = (
-                    SELECT COUNT(DISTINCT point1) 
-                    FROM hamiltonian_cycle
+            AND (
+                NOT (c.point2 = ANY(tour))
+                OR (
+                    array_length(tour, 1) = (
+                        SELECT COUNT(DISTINCT point1) 
+                        FROM hamiltonian_cycle
+                    )
+                    AND c.point2 = 'a'
                 )
-                AND c.point2 = 'a'
             )
     ),
     full_paths AS (
