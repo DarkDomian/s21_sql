@@ -1,65 +1,58 @@
--- init salesman table
-CREATE TABLE salesman_graph
-(
+CREATE TABLE towns (
     point1 VARCHAR NOT NULL,
     point2 VARCHAR NOT NULL,
     cost INTEGER NOT NULL
 );
 
-INSERT INTO salesman_graph VALUES
-('b', 'a', 10),
+INSERT INTO towns VALUES 
 ('a', 'b', 10),
-('b', 'd', 25),
-('d', 'b', 25),
-('b', 'c', 35),
-('c', 'b', 35),
-('a', 'd', 20),
-('d', 'a', 20),
 ('a', 'c', 15),
+('a', 'd', 20),
+('b', 'a', 10),
+('b', 'c', 35),
+('b', 'd', 25),
 ('c', 'a', 15),
-('d', 'c', 30),
-('c', 'd', 30);
+('c', 'b', 35),
+('c', 'd', 30),
+('d', 'a', 20),
+('d', 'b', 25),
+('d', 'c', 30);
 
-WITH RECURSIVE 
-number_of_towns AS (
-	SELECT COUNT(DISTINCT point1) 
-	FROM salesman_graph
-),
-hamiltonian_cycle AS (
-	-- Base (anchor) query here
-	SELECT 
-		point1,
-		point2,
-		cost,
-		0 AS total_cost,
-		ARRAY[point1] AS path
-	FROM salesman_graph sg
-	WHERE sg.point1 = 'a'
-
-	UNION ALL
-	-- Recursive query here
-	SELECT 
-		sg.point1,
-		sg.point2,
-		sg.cost,
-		hc.total_cost + hc.cost,
-		array_append(path, sg.point1)
-	FROM salesman_graph sg
-	JOIN hamiltonian_cycle hc 
-		ON hc.point2 = sg.point1
-		AND hc.point1 != sg.point2
-		AND (
-            array_length(hc.path, 1) < 4
-            OR sg.point1 = 'a'
+CREATE MATERIALIZED VIEW possible_tours AS (
+    WITH RECURSIVE
+		number_of_towns AS (
+			SELECT COUNT(DISTINCT point1) AS num 
+			FROM towns
+		),
+        paths AS (
+            SELECT 
+                point2 AS current,
+                cost AS total_cost,
+                array[point1, point2] AS tour
+            FROM towns
+            WHERE point1 = 'a'
+            UNION ALL
+            SELECT
+                t.point2 AS current,
+                p.total_cost + t.cost AS total_cost,
+                array_append(tour, t.point2) 
+            FROM paths p
+            INNER JOIN towns t ON p.current = t.point1
+            WHERE
+                NOT (t.point2 = ANY(tour))
+                OR (
+                    array_length(tour, 1) = (SELECT * FROM number_of_towns)
+                    AND t.point2 = 'a'
+                )
         )
-	WHERE array_length(path, 1) < 5
-),
-possible_tours AS (
-	SELECT DISTINCT total_cost, path AS tour
-	FROM hamiltonian_cycle
-	WHERE array_length(path, 1) > (SELECT * FROM number_of_towns)
-)
+    SELECT 
+        total_cost,
+        tour
+    FROM paths, number_of_towns
+	WHERE array_length(tour, 1) > number_of_towns.num
+);
 
-SELECT * FROM possible_tours
+SELECT *
+FROM possible_tours
 WHERE total_cost = (SELECT MIN(total_cost) FROM possible_tours)
 ORDER BY total_cost, tour;
