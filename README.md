@@ -38,6 +38,7 @@ docker-compose down
 - <a href="./snapshots/"><b>Snapshots</b></a>
 - <a href="./salesman-problem/"><b>Travaling Salesman Problem</b></a>
 - <a href="./database-index/"><b>Database Index</b></a>
+- <a href="./integrating-features/"><b>Integrating Features</b></a>
 <!-- 
 ```bash
 for i in {00..08}; do
