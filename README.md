@@ -40,6 +40,7 @@ docker-compose down
 - <a href="./database-index/"><b>Database Index</b></a>
 - <a href="./integrating-features/"><b>Integrating Features</b></a>
 - <a href="./data-aggregation/"><b>Data Aggregation</b></a>
+- <a href="./isolation-levels/"><b>Isolation Levels</b></a>
 <!-- 
 ```bash
 for i in {00..08}; do
