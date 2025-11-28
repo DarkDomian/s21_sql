@@ -31,16 +31,18 @@ docker-compose down
 
 ## Learning Journey
 
-- <a href="./basic/"><b>First Steps in SQL</b></a>
-- <a href="./sets-joins/"><b>Sets & JOINs</b></a>
-- <a href="./deep-joins/"><b>Deep JOINs</b></a>
-- <a href="./dml/"><b>Data Manipulating Language</b></a>
-- <a href="./snapshots/"><b>Snapshots</b></a>
-- <a href="./salesman-problem/"><b>Travaling Salesman Problem</b></a>
-- <a href="./database-index/"><b>Database Index</b></a>
-- <a href="./integrating-features/"><b>Integrating Features</b></a>
-- <a href="./data-aggregation/"><b>Data Aggregation</b></a>
-- <a href="./isolation-levels/"><b>Isolation Levels</b></a>
+- <a href="./basic/"><b>Day 00. First Steps in SQL</b></a>
+- <a href="./sets-joins/"><b>Day 01. Sets & JOINs</b></a>
+- <a href="./deep-joins/"><b>Day 02. Deep JOINs</b></a>
+- <a href="./dml/"><b>Day 03. Data Manipulating Language</b></a>
+- <a href="./snapshots/"><b>Day 04. Snapshots</b></a>
+- <a href="./salesman-problem/"><b>Team 00. Travaling Salesman Problem</b></a>
+- <a href="./database-index/"><b>Day 05. Database Index</b></a>
+- <a href="./integrating-features/"><b>Day 06. Integrating Features</b></a>
+- <a href="./data-aggregation/"><b>Day 07. Data Aggregation</b></a>
+- <a href="./isolation-levels/"><b>Day 08. Isolation Levels</b></a>
+- <a href="./func-and-procs/"><b>Day 09. Functions and Procs</b></a>
+<!-- - <a href="./team-folder/"><b>Team 01. Team problem</b></a> -->
 <!-- 
 ```bash
 for i in {00..08}; do
