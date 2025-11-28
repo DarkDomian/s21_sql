@@ -42,7 +42,7 @@ docker-compose down
 - <a href="./data-aggregation/"><b>Day 07. Data Aggregation</b></a>
 - <a href="./isolation-levels/"><b>Day 08. Isolation Levels</b></a>
 - <a href="./func-and-procs/"><b>Day 09. Functions and Procs</b></a>
-<!-- - <a href="./team-folder/"><b>Team 01. Team problem</b></a> -->
+- <a href="./data-warehouse/"><b>Team 01. Data Warehouse</b></a>
 <!-- 
 ```bash
 for i in {00..08}; do
