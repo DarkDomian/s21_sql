@@ -2,7 +2,6 @@ SELECT DISTINCT
     COALESCE("user".name, 'not defined') AS name, 
     COALESCE("user".lastname, 'not defined') AS lastname, 
     c.name AS currency_name,
-    -- temp_curr.name AS currency_name,
     money * COALESCE
     (
         (
@@ -22,6 +21,5 @@ SELECT DISTINCT
     ) AS currency_in_usd
 FROM balance b
 FULL JOIN "user" ON "user".id = b.user_id
--- JOIN (SELECT DISTINCT id, name FROM currency) as temp_curr ON temp_curr.id = b.currency_id
 JOIN currency c ON c.id = b.currency_id
 ORDER BY name DESC, lastname, currency_name;
