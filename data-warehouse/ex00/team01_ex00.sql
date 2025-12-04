@@ -6,10 +6,6 @@ WITH last_currency AS (
 		updated
     FROM currency
     ORDER BY id, updated DESC
-),
-usr AS (
-	SELECT *
-	FROM "user"
 )
 
 SELECT 
@@ -20,7 +16,7 @@ SELECT
 	COALESCE(lc.name, 'not defined') AS currency_name,
 	COALESCE(lc.rate_to_usd, 1) AS last_rate_to_usd,
 	ROUND((SUM(bl.money) * COALESCE(lc.rate_to_usd, 1)), 0) AS total_volume_id_usd
-FROM usr ur
+FROM "user" ur
 FULL JOIN balance bl ON bl.user_id = ur.id
 FULL JOIN last_currency lc ON bl.currency_id = lc.id 
 GROUP BY ur.name, ur.lastname, bl.type, lc.name, lc.rate_to_usd
